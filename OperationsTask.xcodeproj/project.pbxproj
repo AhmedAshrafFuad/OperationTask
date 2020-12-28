@@ -35,6 +35,7 @@
 		5B51B71E259808A9004937ED /* S_Bubbles.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 5B51B71B259808A9004937ED /* S_Bubbles.m4r */; };
 		5B51B75D2598138C004937ED /* Double + IsIntegar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51B75C2598138C004937ED /* Double + IsIntegar.swift */; };
 		5B76FE602597A0A20045B9AA /* GradientTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76FE5F2597A0A20045B9AA /* GradientTextField.swift */; };
+		5B7B2AC4259A22C50013687A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7B2AC3259A22C50013687A /* LocationService.swift */; };
 		DD06FAD594B2B6C179172FC5 /* Pods_OperationsTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A49C98A96480A77AF17982A /* Pods_OperationsTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		5B51B71B259808A9004937ED /* S_Bubbles.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = S_Bubbles.m4r; sourceTree = "<group>"; };
 		5B51B75C2598138C004937ED /* Double + IsIntegar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + IsIntegar.swift"; sourceTree = "<group>"; };
 		5B76FE5F2597A0A20045B9AA /* GradientTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientTextField.swift; sourceTree = "<group>"; };
+		5B7B2AC3259A22C50013687A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		5D29F0474FFC5521F4AE7E41 /* Pods-OperationsTask-OperationsTaskUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationsTask-OperationsTaskUITests.debug.xcconfig"; path = "Target Support Files/Pods-OperationsTask-OperationsTaskUITests/Pods-OperationsTask-OperationsTaskUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		96D229466357931B722F36EA /* Pods-OperationsTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationsTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-OperationsTaskTests/Pods-OperationsTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0F0219BBB18AEBCD4F7CE5E /* Pods-OperationsTask-OperationsTaskUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationsTask-OperationsTaskUITests.release.xcconfig"; path = "Target Support Files/Pods-OperationsTask-OperationsTaskUITests/Pods-OperationsTask-OperationsTaskUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				5B51B71125980807004937ED /* SoundHelper.swift */,
+				5B7B2AC3259A22C50013687A /* LocationService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				5B3C08A7259790CA00719C1A /* SceneDelegate.swift in Sources */,
 				5B3C0911259794F700719C1A /* OperationsVM.swift in Sources */,
 				5B3C091B2597950A00719C1A /* OperationModel.swift in Sources */,
+				5B7B2AC4259A22C50013687A /* LocationService.swift in Sources */,
 				5B08DD292598630D00FA4152 /* MapVC.swift in Sources */,
 				5B3C09222597994100719C1A /* GradientView.swift in Sources */,
 				5B51B70C2597FD38004937ED /* UIViewController+UIAlertController.swift in Sources */,
@@ -649,7 +653,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4Z6MA339J;
 				INFOPLIST_FILE = OperationsTask/Configuration/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -673,7 +677,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C4Z6MA339J;
 				INFOPLIST_FILE = OperationsTask/Configuration/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
