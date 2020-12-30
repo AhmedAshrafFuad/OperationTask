@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -15,19 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
+      
+        FirebaseApp.configure()
+        application.registerForRemoteNotifications()
         requestNotificationAuthorization()
         setRootVC()
         LocationService.shared.startMonitoringLocation()
-
+        
         if let _ = launchOptions?[.location]{
             LocationService.shared.startMonitoringLocation()
         }
-        
-        
+            
         return true
     }
-    
+
         
     func requestNotificationAuthorization(){
         UNUserNotificationCenter.current().delegate = self
@@ -45,6 +47,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+   
+        DispatchQueue.main.async {
+            let application = UIApplication.shared
+            let backgroundId = application.beginBackgroundTask {}
+            if backgroundId != .invalid {
+                application.endBackgroundTask(backgroundId)
+                completionHandler(.failed)
+            }
+            self.changeFBValue { (result) in
+                completionHandler(result)
+            }
+        }
+    }
+    
+    
+    func changeFBValue(completion: @escaping(UIBackgroundFetchResult)->()){
+        let url = URL(string: "https://spry-tesla-252013-default-rtdb.firebaseio.com/.json")
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        var task: URLSessionDataTask? = nil
+        if let url = url {
+            var request = URLRequest(url: url)
+            request.httpMethod = "PUT"
+            let requestBody = try? JSONSerialization.data(withJSONObject: ["TaskPerformed":true], options: [])
+            guard requestBody != nil  else {
+                completion(.failed)
+                return
+            }
+            request.httpBody = requestBody
+            task = session.dataTask(with: request, completionHandler: { data, response, error in
+                completion(.newData)
+            })
+        }
+        task?.resume()
+    }
+    
+
     func setRootVC(){
         if let window = window{
             let nib = UINib(nibName: "OperationsVC", bundle:nil)
@@ -60,6 +100,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
-    
 }
+
+
+
+
+
+
 

@@ -9,17 +9,14 @@ import CoreLocation
 import UIKit
 
 class LocationService: NSObject, CLLocationManagerDelegate {
-
+    
     static let shared = LocationService()
     var locationManager = CLLocationManager()
-//    var significatLocationManager = CLLocationManager()
     var currentLocation: CLLocation!
-//    var timer = Timer()
-//    var bgTask = UIBackgroundTaskIdentifier.invalid
-
-   
     
-  
+    
+    
+    
     override init() {
         super.init()
         locationManager.requestAlwaysAuthorization()
@@ -29,12 +26,12 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.startMonitoringSignificantLocationChanges()
     }
-
-   
+    
+    
     func startMonitoringLocation() {
         locationManager.startMonitoringSignificantLocationChanges()
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.last!
     }
@@ -42,9 +39,10 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         fireLocalNotification( body: "you left the specific region")
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         fireLocalNotification( body: "you entered the specific region")
+        locationManager.stopMonitoringSignificantLocationChanges()
     }
     
     func setLocationRegion(){
@@ -66,7 +64,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: "locationUpdated", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
-        
-    
     }
+    
 }

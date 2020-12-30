@@ -1,6 +1,0 @@
-framework module Pods_OperationsTask_OperationsTaskUITests {
-  umbrella header "Pods-OperationsTask-OperationsTaskUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
